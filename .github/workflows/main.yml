@@ -9,7 +9,12 @@ jobs:
    runs-on: ubuntu-latest
    steps:
      - name: My first job
-       run: echo "My first YAML file..!"
+       run: echo "My first YAML file..!" 
+  my-second-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: My second job
+        run: echo: "I'm job 2"
      
     
  
