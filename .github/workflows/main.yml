@@ -2,19 +2,24 @@ name: Learning YAML
 
 on:
  push:
-   branches: ["main"]
+   branches: [ "main" ]
 
 jobs:
   my-first-job:
    runs-on: ubuntu-latest
+   strategy:
+     matrix:
+       node-version: [16, 18, 20]
    steps:
      - name: My first job
        run: echo "My first YAML file..!" 
+       
+     - name: Test on Node ${{ matrix.node-version }}
+       run: echo "Testing on Node ${{ matrix.node-version }}"
+       
   my-second-job:
+    needs: my-first-job
     runs-on: ubuntu-latest
     steps:
       - name: My second job
-        run: echo "I'm job 2"
-     
-    
- 
+        run: echo " I am job 2 - I waited for job 1! "
