@@ -7,19 +7,24 @@ on:
 jobs:
   my-first-job:
    runs-on: ubuntu-latest
-   strategy:
-     matrix:
-       node-version: [16, 18, 20]
+  
    steps:
-     - name: My first job
-       run: echo "My first YAML file..!" 
+     - name: Single line command
+       run: echo "I am a single line command"
        
-     - name: Test on Node ${{ matrix.node-version }}
-       run: echo "Testing on Node ${{ matrix.node-version }}"
+     - name: Multi line command
+       run: |
+          echo "Line 1"
+          echo "Line 2"
+          echo "Line 3"
+
+     - name: Show machine info
+       run: |
+          echo "OS info:"
+          uname -a
+          echo "Current directory:"
+          pwd
+          echo "Files here:"
+          ls -la
        
-  my-second-job:
-    needs: my-first-job
-    runs-on: ubuntu-latest
-    steps:
-      - name: My second job
-        run: echo " I am job 2 - I waited for job 1! "
+
