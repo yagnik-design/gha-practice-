@@ -1,0 +1,23 @@
+name: First sample
+
+on:
+ push:
+  branches: [ "main" ]
+
+jobs:
+ build:
+  runs-on: ubuntu-latest
+  steps:
+   - name: My name
+     run: echo "MY NAME IS 'PAVAN'...!"
+     
+   - name: Date
+     run: |
+          echo "Today's Date"
+          date
+     
+   - name: My current directory
+     run: |
+          echo "current directory"
+          pwd
+   
