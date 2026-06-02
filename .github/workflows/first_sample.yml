@@ -6,6 +6,9 @@ on:
   paths:
     - 'src/**'
     - '*.yml'
+ 
+ pull_request:
+   branches: [ "main" ]
 
 jobs:
  build:
