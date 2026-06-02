@@ -3,6 +3,9 @@ name: First sample
 on:
  push:
   branches: [ "main" ]
+  paths:
+    - 'src/**'
+    - '*.yml'
 
 jobs:
  build:
