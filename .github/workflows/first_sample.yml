@@ -2,10 +2,7 @@ name: First sample
 
 on:
  push:
-  branches: [ "main", "dev" ]
-  paths:
-    - 'src/**'
-    - '*.yml'
+  branches: [ "main" ]
  pull_request:
   branches: [ "main" ]
  
