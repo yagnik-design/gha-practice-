@@ -1,4 +1,4 @@
-console.log("Hello from Pavan's app!");
+console.log("Hello from Pavan app!");
 
 function greet(name) {
   return `Welcome, ${name}!`;
