@@ -8,28 +8,30 @@ on:
  
 
 jobs:
- build:
-  runs-on: ubuntu-latest
-  steps:
-   - uses: actions/checkout@v4
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
-   - uses: actions/setup-node@v4
-     with:
-       node-version: '20'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-   - name: Check Node version
-     run: node --version
-   
-   - name: My name
-     run: echo "MY NAME IS 'PAVAN'...!"
-     
-   - name: Date
-     run: |
-          echo "Today's Date"
-          date
-     
-   - name: My current directory
-     run: |
-          echo "current directory"
-          pwd
-   
+      - name: Create a file
+        run: echo "This is my artifact" > myfile.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: my-artifact
+          path: myfile.txt
+
+  download:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: my-artifact
+
+      - name: Show the file
+        run: cat myfile.txt
