@@ -13,9 +13,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Show context info
-        run: |
-          echo "Branch: ${{ github.ref }}"
-          echo "Actor: ${{ github.actor }}"
-          echo "Commit SHA: ${{ github.sha }}"
-          echo "Repository: ${{ github.repository }}"
+      - name: Try to reveal secret
+        run: echo "Secret is ${{ secrets.MY_SECRET }}"
