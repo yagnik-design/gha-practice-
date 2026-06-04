@@ -12,8 +12,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Login with secret
-        run: |
-          echo "Logging in..."
-          echo ${{ secrets.MY_SECRET }} | grep "secret"
-          echo "Login successful!"
+      - name: Generate output
+        id: my-step
+        run: echo "status=success" >> $GITHUB_OUTPUT
+
+      - name: Use the output
+        run: echo "Previous step status was: ${{ steps.my-step.outputs.status }}"
+
+      - name: Use with conditions
+        if: steps.my-step.outputs.status == 'success'
+        run: echo "Status was success, so this step ran!"
