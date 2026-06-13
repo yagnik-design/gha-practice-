@@ -13,3 +13,6 @@ jobs:
       - name: Only on main branch
         if: github.ref == 'refs/heads/main'
         run: echo "This only runs on main branch!"
+
+      - name: Show who triggered this
+        run: echo "Triggered by: ${{ github.actor }}"
