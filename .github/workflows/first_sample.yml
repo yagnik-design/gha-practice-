@@ -9,23 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: echo "Branch is ${{ github.ref }}"name: First sample
-
-on:
-  push:
-    branches: [ main ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - name: Only on main branch
-        if: github.ref == 'refs/heads/main'
-        run: echo "This only runs on main branch!"
-
-      - name: Show who triggered this
-        env:
-          ACTOR: ${{ github.actor }}
-        run: echo "Triggered by: $ACTOR"
+      - run: echo "Branch is ${{ github.ref }}"
