@@ -2,19 +2,10 @@ name: First sample
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Only on main branch
-        if: github.ref == 'refs/heads/main'
-        run: echo "This only runs on main branch!"
-
-      - name: Show who triggered this
-        run: echo "Triggered by: ${{ github.actor }}"
+      - run: echo "Hello Pavan"
