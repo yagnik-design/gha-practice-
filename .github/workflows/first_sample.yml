@@ -12,36 +12,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Generate output
-        id: my-step
-        run: echo "status=success" >> $GITHUB_OUTPUT
+      - name: Only on main branch
+        if: github.ref == 'refs/heads/main'
+        run: echo "This only runs on main branch!"
 
-      - name: Use the output
-        run: echo "Previous step status was: ${{ steps.my-step.outputs.status }}"
+      - name: Only on dev branch
+        if: github.ref == 'refs/heads/dev'
+        run: echo "This only runs on dev branch!"
 
-      - name: Use with conditions
-        if: steps.my-step.outputs.status == 'success'
-        run: echo "Status was success, so this step ran!"name: First sample
-
-on:
- push:
-  branches: [ "main" ]
- pull_request:
-  branches: [ "main" ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Generate output
-        id: my-step
-        run: echo "status=success" >> $GITHUB_OUTPUT
-
-      - name: Use the output
-        run: echo "Previous step status was: ${{ steps.my-step.outputs.status }}"
-
-      - name: Use with conditions
-        if: steps.my-step.outputs.status == 'success'
-        run: echo "Status was success, so this step ran!"
+      - name: Show who triggered this
+        run: echo "Triggered by: ${{ github.actor }}"
