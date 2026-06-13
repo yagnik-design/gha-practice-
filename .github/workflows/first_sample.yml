@@ -15,4 +15,4 @@ jobs:
         run: echo "This only runs on main branch!"
 
       - name: Show who triggered this
-        run: echo "Triggered by: ${{ github.actor }}"
+        run: echo 'Triggered by: ${{ github.actor }}'
